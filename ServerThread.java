@@ -28,8 +28,8 @@ public class ServerThread extends Thread {
                 this.socket.close();
             } else {
                 this.username = username;
-                mapClient.put(username, this);
                 this.objectOutputStream.writeObject(true);
+                mapClient.put(username, this);
                 sendToAll(new Message("", this.username + " entrou na conversa"));
                 start();
             }
@@ -54,9 +54,9 @@ public class ServerThread extends Thread {
                 sendToAll(msg);
             }
         } catch (ClassNotFoundException e) {
-            e.printStackTrace();
+            // e.printStackTrace();
         } catch (IOException e) {
-            e.printStackTrace();
+            // e.printStackTrace();
         }
         mapClient.remove(this.username);
         sendToAll(new Message("", this.username + " saio da conversa"));
@@ -67,7 +67,7 @@ public class ServerThread extends Thread {
             try {
                 mapClient.get(key).objectOutputStream.writeObject(msg);
             } catch (IOException e) {
-                e.printStackTrace();
+                // e.printStackTrace();
             }
         }
     }
