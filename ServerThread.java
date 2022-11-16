@@ -30,7 +30,7 @@ public class ServerThread extends Thread {
                 this.username = username;
                 mapClient.put(username, this);
                 this.objectOutputStream.writeObject(true);
-                sendToAll(new Message("", this.username + " entered the chet"));
+                sendToAll(new Message("", this.username + " entrou na conversa"));
                 start();
             }
         } catch (IOException e) {
@@ -59,7 +59,7 @@ public class ServerThread extends Thread {
             e.printStackTrace();
         }
         mapClient.remove(this.username);
-        sendToAll(new Message("", this.username + " left in chat"));
+        sendToAll(new Message("", this.username + " saio da conversa"));
     }
 
     private synchronized void sendToAll(Message msg) {
